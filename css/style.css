@@ -1,0 +1,216 @@
+/*PAGE GLOBALE*/
+* {
+    box-sizing: border-box;
+}
+html { 
+   width: 100%; 
+}
+
+                /*HEADER de toutes les pages*/
+header {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #F3E9F1;
+}
+header a {
+    width: 33%;
+}  
+.logo {
+    width: 50%;
+    height: auto;
+    margin-left: 5%;  
+}
+h1 {
+ width: 33%;
+    font-size: 300%;
+}
+.header-cart {
+    width: 33%;
+    display: flex;
+    justify-content: right;
+}
+.header-cart a img {
+    width: 20%;
+    float: right;
+    margin: 2% 2% 2% 0;
+}
+.logo-cart {
+    width: 80%;
+}
+header span {
+    font-size: 2em;
+    margin-top: 10%;
+    margin-bottom: 0; 
+}
+
+                /*PAGES par pages*/
+/*index*/
+.index {
+    background-color: rgb(175, 175, 175);
+    margin-top: 2%;
+    width: 50%;
+}  
+#cam-ID {
+    background-color: white;
+    margin-top: 5%;
+}
+#cam-ID .row h2 {
+    margin-bottom: 5%;
+    font-size: 300%;
+}
+#cam-ID .row .price {
+    font-size: 200%;
+}
+#cam-ID .row p {
+    margin-top: 5%;
+    font-size: 100%;
+}
+#cam-ID .row a {
+    margin-bottom: 5%;
+    margin-top: 50px;
+}
+.carousel {
+    width: 100%;
+}
+.carousel-inner {
+    width: 100%;
+    margin: auto;
+}
+.carousel-item a img {
+    width: 400px;
+    height: auto;
+    max-width: 60%;
+    max-height: auto;
+    margin: auto;
+    align-self: auto;
+}
+.carousel-caption {
+    border: 0px solid black;
+    border-radius: 60px;
+    width: 20%;
+    background-color: white;
+    color: black;
+}
+.carousel-caption h2 {
+    font-size: 150%;
+    color: black;
+}
+.carousel-caption span {
+    color: black;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon { 
+    height: 100px; 
+    width: 60px; 
+    outline: black; 
+} 
+
+/*produits*/
+
+.camPart h2, .camPart div, .camPart span {
+    margin: auto;
+}
+.row div .btn-primary {
+    width: 50%;
+    margin: 10% 25% 10% 25%;
+}
+
+/*panier*/
+.panier {
+    width: 100%;
+}
+.cam {
+    width: 100%;
+}
+.cam p {
+    font-size: 400%;
+    margin-top: 10%;
+    text-align: center;
+}
+.cam .btn-primary {
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;  
+    align-self: center;
+}
+.camPart{
+    display: flex;
+    justify-content: space-around;
+}
+table {
+    margin-top: 5%;
+    width: 100%;
+}
+table tr {
+    width: 100%;
+    margin-top: 2%;
+}
+table tr td {
+    width: 20%;
+    font-size: 70%;
+    margin: 0;
+}
+#en-tete {
+    font-weight: bold;
+    font-size: 150%;
+    margin: 2% 0;
+}
+.miniature {
+    width: 100px;
+    margin-right: 2%;
+}
+.btn-warning {
+    margin: 2% 40%;
+    width: 20%;
+}
+.btn-danger {  
+    width: 10%;
+    height: 10%;
+}
+#confirm {
+    margin: 10% 2%;
+}
+.form-group {
+    max-width: 900px;
+}
+.divider {
+    border: 1px solid grey;
+    width: 50%;
+    margin: 2% auto;
+}
+
+/*confirmation*/
+#confirm {
+    margin: 2% 10% 2% 10%;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 15px 10px 10px green;
+}
+#confirm p {
+    font-size: 1.5em;
+    margin: 5% 5%;
+}
+
+                /*FOOTER de toutes les pages*/
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #F3E9F1;
+    width: 100%;
+    height: 100px;
+}
+.contact, .mentions {
+    font-size: 1.5em;
+    text-align: center;
+    align-content: center;
+}
+.contact {
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.mentions {
+    float: right;
+    margin-right: 2%;
+    margin-top: 2%;
+}

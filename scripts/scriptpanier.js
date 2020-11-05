@@ -34,8 +34,7 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
         monPanier.forEach(function(item, index, object) {      
 //Cr√©ation bouton supprimer du panier
         let btnRem = document.createElement('button');
-        btnRem.className = 'btn btn-danger';
-        btnRem.innerHTML = 'supprimer';
+        btnRem.className = 'fas fa-trash';
         btnRem.addEventListener('click', event => {
             let ind = monPanier.indexOf(item);          
             if (ind !== -1) { 
@@ -47,7 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
             }
         });
         let newProd = document.createElement("tr");
-        newProd.className = "camPart";
+        newProd.className = "camPart prod";
 
         let camImg = document.createElement('img');
         camImg.src = item.img;
@@ -102,8 +101,8 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
         newProd.appendChild(camPrice);
         newProd.appendChild(totCamprice);
         newProd.appendChild(btnRem);
-        }
-        )
+    })
+
     //Cr√©ation des variables du formulaire
         let lastnameReq = document.getElementById('last_name');
         let firstnameReq = document.getElementById('first_name');
@@ -116,7 +115,7 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
 //Ajout du bouton permettant de passer √† la validation du panier
         let mainElt = document.querySelector('.container'); 
         let validation = document.createElement('a');
-        validation.className = 'btn btn-warning';
+        validation.className = 'btn btn-success';
         validation.textContent = 'Valider le panier';
         mainElt.appendChild(validation);
         validation.addEventListener('click', function checkEntries() {

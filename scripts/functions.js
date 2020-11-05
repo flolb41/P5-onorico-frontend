@@ -14,7 +14,6 @@ export function Contact(firstName, lastName, address, city, email) {
 
 let panier = JSON.parse(localStorage.getItem('panier'));
 let nbProdCart = panier.length;
-console.log(nbProdCart);
 
 export function NbItemLogo() {    
   let cartElt = document.querySelector('header div');

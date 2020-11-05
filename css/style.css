@@ -24,6 +24,7 @@ header a {
 h1 {
  width: 33%;
     font-size: 300%;
+    text-align: center;
 }
 .header-cart {
     width: 33%;
@@ -47,38 +48,27 @@ header span {
                 /*PAGES par pages*/
 /*index*/
 .index {
-    background-color: rgb(175, 175, 175);
     margin-top: 2%;
-    width: 50%;
-}  
-#cam-ID {
-    background-color: white;
-    margin-top: 5%;
-}
-#cam-ID .row h2 {
     margin-bottom: 5%;
-    font-size: 300%;
-}
-#cam-ID .row .price {
-    font-size: 200%;
-}
-#cam-ID .row p {
-    margin-top: 5%;
-    font-size: 100%;
-}
-#cam-ID .row a {
-    margin-bottom: 5%;
-    margin-top: 50px;
-}
+    width: 100%;
+} 
+h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-top: 3%;
+} 
 .carousel {
     width: 100%;
+    background-color: grey;
+    margin: auto;
 }
 .carousel-inner {
     width: 100%;
     margin: auto;
 }
 .carousel-item a img {
-    width: 400px;
+    width: 600px;
     height: auto;
     max-width: 60%;
     max-height: auto;
@@ -104,9 +94,59 @@ header span {
     width: 60px; 
     outline: black; 
 } 
+.listing {
+    display: flex;
+    flex-direction: column;
+}
+.cam-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.cam-listing {
+    width: 30%;
+    margin: 5% 10%;
+    border: 1px solid black;
+    padding: 5%;
+}
+.cam-listing:hover {
+    box-shadow: 15px 10px 10px grey;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.cam-listing:hover::after {
+    opacity: 1;
+}
+.cam-listing a {
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    
+}
+.listing img {
+    width: 100%;
+}
+
 
 /*produits*/
-
+#cam-ID {
+    background-color: white;
+    margin-top: 5%;
+}
+#cam-ID .row h2 {
+    margin-bottom: 5%;
+    font-size: 300%;
+}
+#cam-ID .row .price {
+    font-size: 200%;
+}
+#cam-ID .row p {
+    margin-top: 5%;
+    font-size: 100%;
+}
+#cam-ID .row a {
+    margin-bottom: 5%;
+    margin-top: 50px;
+}
 .camPart h2, .camPart div, .camPart span {
     margin: auto;
 }
@@ -118,6 +158,7 @@ header span {
 /*panier*/
 .panier {
     width: 100%;
+    margin-bottom:15%;
 }
 .cam {
     width: 100%;
@@ -145,8 +186,8 @@ table tr {
     width: 100%;
     margin-top: 2%;
 }
-table tr td {
-    width: 20%;
+td {
+    width: 15%;
     font-size: 70%;
     margin: 0;
 }
@@ -155,17 +196,23 @@ table tr td {
     font-size: 150%;
     margin: 2% 0;
 }
-.miniature {
-    width: 100px;
-    margin-right: 2%;
+.prod {
+    font-size: 150%;
 }
-.btn-warning {
+.miniature {
+    width: 15%;
+}
+.btn-success {
     margin: 2% 40%;
     width: 20%;
 }
-.btn-danger {  
-    width: 10%;
-    height: 10%;
+.fas {  
+    border: none;
+    background-color: white;
+    font-size: 150%;
+    color: grey;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 #confirm {
     margin: 10% 2%;

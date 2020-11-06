@@ -73,8 +73,9 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg�
         };       
           console.log(addCam);
        
-        if (addCam === monPanier[addCam]) {          
+        if (monPanier.valueOf(addCam[id]) === this.addCam) {          
           alert('Ce produit a déjà été ajouté !');
+          console.log
         } else {            
           monPanier.push(addCam);
           alert("Vous avez ajouté le produit : " + name + " au panier !");

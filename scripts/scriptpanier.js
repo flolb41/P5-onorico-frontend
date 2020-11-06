@@ -6,7 +6,8 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
     NbItemLogo();
     let productId = [];
     let postData; 
-    let totalCost;
+    let totalpriceArray = [];
+    let totalPrice;
     let urlPost = 'http://localhost:3000/api/cameras/order';
     let promisePost;
     let listCam = document.querySelector("tbody");
@@ -62,14 +63,30 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
         let qty = document.createElement("td");
         qty.className = "quantite";
 
+        let totCamprice = document.createElement("td");
+        totCamprice.className = "total-prix-cam";
+        totCamprice.textContent = item.prix/100 + ' ‚Ç¨';
+        let prixTotparCam = (item.prix/100);
+        totalpriceArray.push(prixTotparCam);
+        let prixTotal = 0;
+        console.log(totalpriceArray);
+
         let nbItem = document.createElement("select");
         nbItem.id = "nombre";
+        nbItem.addEventListener('change', function () {
+            totCamprice.textContent = (item.prix/100) * this.value +" ‚Ç¨";
+            prixTotparCam = (item.prix/100) * this.selectedIndex.value;
+            totalpriceArray.push(prixTotparCam);
+            location.reload;
+        })
+        let reducer = (accumulator, currentValue) => accumulator + currentValue;
+        prixTotal = totalpriceArray.reduce(reducer);
+        console.log(prixTotal);
 
         let firstChoice = document.createElement("option");
         firstChoice.className = "choice1";
         firstChoice.textContent = 1;
         firstChoice.value = 1;
-        firstChoice.selected;
 
         let secChoice = document.createElement("option");
         secChoice.className = "choice2";
@@ -85,9 +102,8 @@ window.addEventListener('DOMContentLoaded', (event) => {console.log( "DOM Charg√
         camPrice.className = "prix-unit";
         camPrice.textContent = item.prix/100 +" ‚Ç¨";
 
-        let totCamprice = document.createElement("td");
-        totCamprice.className = "total-prix-cam";
-        totCamprice.textContent = (item.prix/100) * nbItem.value +" ‚Ç¨";
+        
+        
         
 // Association Parents/Enfants plus pratique pour ordre affichage
         listCam.appendChild(newProd);

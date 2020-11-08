@@ -175,7 +175,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 window.location = './confirmation.html';   
             }).catch(response =>{
                 console.log(response)
-            })        
+            }) 
+            //Commande terminée on supprime ce qui se trouve dans le localstorage
+            localStorage.removeItem('panier'); 
+            localStorage.removeItem('confirmation');  
         });
     }
 });

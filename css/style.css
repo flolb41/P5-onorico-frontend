@@ -1,6 +1,13 @@
+
+@font-face {
+    font-family: 'DSR';
+    src: url("/fonts/DSR.ttf");
+}
 /*PAGE GLOBALE*/
 * {
     box-sizing: border-box;
+    font-family: 'DSR', cursive;
+    font-size: 110%;
 }
 html { 
    width: 100%; 
@@ -25,6 +32,8 @@ h1 {
  width: 33%;
     font-size: 300%;
     text-align: center;
+    font-size: 5em;
+    font-weight: bold;
 }
 .header-cart {
     width: 33%;
@@ -57,6 +66,8 @@ h3 {
     text-align: center;
     margin-bottom: 3%;
     margin-top: 3%;
+    font-size: 2em;
+    font-weight: bold;
 } 
 .carousel {
     width: 100%;
@@ -75,18 +86,18 @@ h3 {
     align-self: auto;
 }
 .carousel-caption {
-    border: 0px solid black;
-    border-radius: 60px;
-    width: 20%;
+    border-radius: 40%;
+    width: 24%;
     background-color: white;
     color: black;
 }
 .carousel-caption h2 {
-    font-size: 150%;
+    font-size: 80%;
     color: black;
 }
 .carousel-caption span {
     color: black;
+    font-size: 60%;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon { 
     height: 100px; 
@@ -103,8 +114,8 @@ h3 {
     width: 100%;
 }
 .cam-listing {
-    width: 30%;
-    margin: 5% 10%;
+    width: 33%;
+    margin: 5% 8%;
     border: 1px solid black;
     padding: 5%;
 }
@@ -118,8 +129,10 @@ h3 {
 .cam-listing a {
     width: 100%;
     color: black;
-    text-decoration: none;
-    
+    text-decoration: none;   
+}
+.cam-listing a h2, .cam-listing a span {
+    text-align: center;
 }
 .listing img {
     width: 100%;
@@ -152,6 +165,7 @@ h3 {
 .row div .btn-primary {
     width: 50%;
     margin: 10% 25% 10% 25%;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 
 /*panier*/
@@ -172,6 +186,7 @@ h3 {
     margin-top: 2%;
     margin-bottom: 2%;  
     align-self: center;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 .camPart{
     display: flex;
@@ -204,6 +219,7 @@ td {
 .btn-success {
     margin: 2% 40%;
     width: 20%;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 .fas {  
     border: none;
@@ -213,28 +229,58 @@ td {
     margin-left: 6%;
     margin-right: 6%;
 }
-#confirm {
-    margin: 10% 2%;
-}
-.form-group {
-    max-width: 900px;
-}
 .divider {
     border: 1px solid grey;
     width: 50%;
     margin: 2% auto;
 }
+.form-group {
+    max-width: 900px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+.form-group label {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
 
 /*confirmation*/
-#confirm {
+.corps {
     margin: 2% 10% 2% 10%;
     border: 2px solid black;
     border-radius: 20px;
-    box-shadow: 15px 10px 10px green;
+    box-shadow: 0px 0px 50px blue;
+    padding: 2% 5%;
 }
-#confirm p {
-    font-size: 1.5em;
-    margin: 5% 5%;
+.corps p {
+    width: 100%;
+    font-weight: bold;   
+}
+.corps > .order-number {
+    margin-bottom: 2%;
+}
+.corps > .bravo {
+    font-size: 300%;
+    font-weight: 800;
+    text-align: center;
+}
+.corps > .confirm {
+    font-size: 200%;
+    text-justify: auto;
+    text-align: center;
+}
+.corps > .suivi {
+    font-size: 200%;
+    text-align: center;
+}
+.corps > .merci {
+    font-size: 150%;
+}
+.bouton {
+    width: 100%;
+    padding-left: 45%;
+}
+#confirm button {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-align: center;
 }
 
                 /*FOOTER de toutes les pages*/

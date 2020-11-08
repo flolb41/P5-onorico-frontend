@@ -1,3 +1,4 @@
+// Fonction de création du contact pour envoi au serveur 
 let lastnameReq = document.getElementById('last_name');
 let firstnameReq = document.getElementById('first_name');
 let mailReq = document.getElementById('email');
@@ -12,12 +13,16 @@ export function Contact(firstName, lastName, address, city, email) {
     this.email = mailReq.value;
 }
 
-let panier = JSON.parse(localStorage.getItem('panier'));
-let nbProdCart = panier.length;
+// Fonction servant à afficher le nombre d'item dans le panier a coté du logo
 
-export function NbItemLogo() {    
-  let cartElt = document.querySelector('header div');
-  let nbProdElt = document.createElement('span');
-  nbProdElt.textContent = nbProdCart;
-  cartElt.appendChild(nbProdElt);
-};
+export function NbItemLogo() {
+  if (localStorage.getItem('panier') === null) {
+    let nbProdCart = 0;
+  } else {
+    let nbProdCart = JSON.parse(localStorage.getItem('panier')).length;   
+    let cartElt = document.querySelector('header div');
+    let nbProdElt = document.createElement('span');
+    nbProdElt.textContent = nbProdCart;
+    cartElt.appendChild(nbProdElt);
+  };
+}

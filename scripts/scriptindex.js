@@ -1,3 +1,4 @@
+
 //importation d'une fonction globale
 import {NbItemLogo} from './functions.js';
 
@@ -87,8 +88,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 // Spécifique caroussel le premier item doit etre actif pour afficher caroussel            
         if (index === 0) {
           divCam.className = "active carousel-item";
-        }
-      }); 
+      }
+    }); 
 //si problème sur la requete fetch, on l'affiche dans la console
     }).catch(function(err) {
   console.log('Fetch problem: ' + err.message);

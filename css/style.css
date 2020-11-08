@@ -71,25 +71,35 @@ h3 {
 } 
 .carousel {
     width: 100%;
-    background-color: grey;
+    background-color: white;
     margin: auto;
+    border: 1px solid grey;
+    border-radius: 20px;
+    box-shadow: 0px 10px 50px grey;
 }
 .carousel-inner {
     width: 100%;
     margin: auto;
 }
 .carousel-item a img {
-    width: 600px;
-    height: auto;
-    max-width: 60%;
-    margin: auto;
+    width: 60%;
+    max-width: 900px;
+    height: 50%;
+    max-height: 600px;
+    margin: 5% auto;
     align-self: auto;
+    border-radius: 20px;
+}
+.carousel-indicators {
+    filter: invert(100%);
 }
 .carousel-caption {
+    border: 1px solid grey;
     border-radius: 40%;
     width: 24%;
     background-color: white;
     color: black;
+    margin-bottom: 2%;
 }
 .carousel-caption h2 {
     font-size: 80%;
@@ -99,10 +109,11 @@ h3 {
     color: black;
     font-size: 60%;
 }
-.carousel-control-prev-icon, .carousel-control-next-icon { 
+.carousel-control-prev-icon, 
+.carousel-control-next-icon { 
     height: 100px; 
-    width: 60px; 
-    outline: black; 
+    width: 60px;
+    filter: invert(100%);   
 } 
 .listing {
     display: flex;
@@ -117,6 +128,7 @@ h3 {
     width: 33%;
     margin: 5% 8%;
     border: 1px solid black;
+    border-radius: 20px;
     padding: 5%;
 }
 .cam-listing:hover {
@@ -133,9 +145,12 @@ h3 {
 }
 .cam-listing a h2, .cam-listing a span {
     text-align: center;
+    font-size: 100%;
+    margin-top: 10%;
 }
 .listing img {
     width: 100%;
+    border-radius: 20px;
 }
 
 
@@ -144,20 +159,28 @@ h3 {
     background-color: white;
     margin-top: 5%;
 }
+#cam-ID .row {
+    margin: 0;
+    height: auto;
+}
 #cam-ID .row h2 {
     margin-bottom: 5%;
     font-size: 300%;
 }
 #cam-ID .row .price {
-    font-size: 200%;
+    font-size: 150%;
 }
 #cam-ID .row p {
     margin-top: 5%;
     font-size: 100%;
+    text-justify: auto;
 }
 #cam-ID .row a {
     margin-bottom: 5%;
     margin-top: 50px;
+}
+#cam-ID .row img {
+    border-radius: 100px;
 }
 .camPart h2, .camPart div, .camPart span {
     margin: auto;
@@ -172,6 +195,9 @@ h3 {
 .panier {
     width: 100%;
     margin-bottom:15%;
+}
+.panier .prod img {
+    border-radius: 30px;
 }
 .cam {
     width: 100%;
@@ -247,7 +273,7 @@ td {
     margin: 2% 10% 2% 10%;
     border: 2px solid black;
     border-radius: 20px;
-    box-shadow: 0px 0px 50px blue;
+    box-shadow: 0px 0px 50px black;
     padding: 2% 5%;
 }
 .corps p {
@@ -295,6 +321,8 @@ footer {
     font-size: 1.5em;
     text-align: center;
     align-content: center;
+    text-decoration: none;
+    color: black;
 }
 .contact {
     float: left;

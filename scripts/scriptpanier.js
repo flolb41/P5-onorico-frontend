@@ -16,12 +16,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let urlPost = 'http://localhost:3000/api/cameras/order';
     let listCam = document.querySelector("tbody");
     listCam.className = "cam";
-
-    //Récupération du localStorage pour creer le tableau des items dans le panier
-    let monPanier = JSON.parse(localStorage['panier']);
-
+    
     //Si le panier est vide (si rien dans le localStorage)
-    if (localStorage.key('panier') === null || monPanier.length == 0) {
+    if (localStorage['panier'] === undefined || localStorage['panier'] === null) {
         let emptyPanier = document.createElement('p');
         emptyPanier.textContent = 'Oups !! Votre panier est vide';
         listCam.appendChild(emptyPanier);
@@ -36,7 +33,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         titreCache.style = "display:none";
         let formElt = document.querySelector('form');
         formElt.style = "display:none";
-    } else {
+    } else { 
+        //Récupération du localStorage pour creer le tableau des items dans le panier
+        let monPanier = JSON.parse(localStorage['panier']);
+
         // Sinon on créé la structure du panier avec les infos récupérées dans le localstorage
         monPanier.forEach(function(item, index, object) { 
 
@@ -78,7 +78,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             totalpriceArray.push(prixTotparCam);
 
             let prixTotal = 0;
-            console.log(totalpriceArray);
 
             let nbItem = document.createElement("select");
             nbItem.id = "nombre";
@@ -88,10 +87,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 totalpriceArray.push(prixTotparCam);
                 location.reload;
             })
+            //on additionne toutes les valeurs du array pour avoir le prix total
             let reducer = (accumulator, currentValue) => accumulator + currentValue;
             prixTotal = totalpriceArray.reduce(reducer);
-            console.log(prixTotal);
 
+            //création du select dans le panier
             let firstChoice = document.createElement("option");
             firstChoice.className = "choice1";
             firstChoice.textContent = 1;
@@ -135,9 +135,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let arrayContact = [firstnameReq, lastnameReq, addressReq, cityReq, mailReq];
 
         //Ajout du bouton permettant de passer à la validation du panier
-        let mainElt = document.querySelector('.container'); 
+        let mainElt = document.querySelector('.panier'); 
     
-        let validation = document.createElement('a');
+        //Lors de la validation du panier, on vérifie les entrées du formulaire
+        let validation = document.querySelector('#save');
         validation.className = 'btn btn-success';
         validation.textContent = 'Valider le panier';
         mainElt.appendChild(validation);
@@ -155,11 +156,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 alert('Veuillez remplir les champs obligatoires');
                 return false;
             };
-            let contact = new Contact();    
+            //récupération et mise en forme des données à envoyer au serveur
+            let contact = new Contact(firstnameReq, lastnameReq, addressReq, cityReq, mailReq);    
             let products = productId;            
             postData = {'contact':contact, 'products':products};
 
-            //Post mon panier + coordonnées
+            //Requête Post des données puis récupération de la réponse du serveur
+            //qui est stockée en localStorage ('confirmation') enfin on envoie 
+            //directement le client sur la page
             fetch(urlPost, {
                 method: 'POST',
                 mode:'cors',
@@ -176,9 +180,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }).catch(response =>{
                 console.log(response)
             }) 
-            //Commande terminée on supprime ce qui se trouve dans le localstorage
+            //Commande terminée on supprime le localstorage ('panier')
             localStorage.removeItem('panier'); 
-            localStorage.removeItem('confirmation');  
         });
     }
 });

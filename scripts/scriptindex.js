@@ -55,10 +55,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let imgElt = document.createElement("img");
         imgElt.className = "d-block";
         imgElt.src = article.imageUrl;
+        imgElt.alt ="image produit appareil photo";
 
         let imgListing = document.createElement("img");
         imgListing.className = 'image-prod';
         imgListing.src = article.imageUrl;
+        imgListing.alt ="image produit appareil photo";
 
         let lensElt = document.createElement("ul");
         lensElt.innerHTML = "<li>"+article.lenses[0]+"</li><li>"+article.lenses[1]+"</li>";
@@ -95,5 +97,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
   console.log('Fetch problem: ' + err.message);
 });
 });
-
-

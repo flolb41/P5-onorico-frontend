@@ -1,16 +1,10 @@
 // Fonction de création du contact pour envoi au serveur 
-let lastnameReq = document.getElementById('last_name');
-let firstnameReq = document.getElementById('first_name');
-let mailReq = document.getElementById('email');
-let addressReq= document.getElementById('address');
-let cityReq = document.getElementById('ville');
-
 export function Contact(firstName, lastName, address, city, email) {
-    this.firstName = firstnameReq.value;
-    this.lastName = lastnameReq.value;
-    this.address = addressReq.value;
-    this.city = cityReq.value;
-    this.email = mailReq.value;
+    this.firstName = firstName.value;
+    this.lastName = lastName.value;
+    this.address = address.value;
+    this.city = city.value;
+    this.email = email.value;
 }
 
 // Fonction servant à afficher le nombre d'item dans le panier a coté du logo
@@ -26,3 +20,21 @@ export function NbItemLogo() {
     cartElt.appendChild(nbProdElt);
   };
 }
+
+//Fonction de vérification du formulaire
+
+export function checkEntries(arrayContact) {
+  let error = false;
+  arrayContact.forEach(function(item, index, array) {
+      if (item.value === "") {
+          item.className = "form-control is-invalid";
+          error = true;
+      } else {
+          item.className = 'form-control is-valid';
+      }
+  }) 
+  if (error == true) {
+      alert('Veuillez remplir les champs obligatoires');
+      return false;
+  }
+};

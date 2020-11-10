@@ -2,6 +2,7 @@
 <html lang=fr>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
@@ -15,7 +16,7 @@
                 <a class="logo-cart" href="/panier.html"><img src="/image/panier.svg" alt="logo du panier"></a>
             </div>
         </header>
-        <main class="container panier">
+        <main class="panier">
             <table id="table" class="cam table table-hover">
                 <tr class="camPart" id="en-tete">
                     <td></td>
@@ -27,7 +28,7 @@
                 </tr>
             </table>
             <div class="divider"></div>
-            <form id="coordonnees" class="formulaire">
+            <form id="coordonnees" action="" class="formulaire" method="POST">
                 <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="last_name">Nom:</label>
@@ -48,6 +49,7 @@
                 <div class="form-group col-md-6">    
                     <label for="ville">Ville :</label>
                     <input type="text" class="form-control" id="ville" name="ville" placeholder="Votre Ville" required>
+                    <input type="submit" name="contact" id="save">
                 </div>        
                 </div>
             </form> 

@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let imgElt = document.createElement("img");        
     imgElt.className = "col-lg-7";
     imgElt.src = image;
+    imgElt.alt ="image produit appareil photo";
     
     let descElt = document.createElement("p");
     descElt.className = "description";
@@ -72,17 +73,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     btnElt.href = "#";
     btnElt.className = "btn btn-primary";
     btnElt.textContent = "Ajouter au panier";
-    console.log(monPanier);
     btnElt.addEventListener("click", function ajoutPanier() {    
       let addCam = {
         id : idCam,
         name : name,
         prix : price,
         img : image 
-      };        
-      if (monPanier.valueOf(addCam[id]) === this.addCam) {          
+      };   
+      const estDansPanier = monPanier.filter(function(elem){return elem.id === idCam}); 
+      console.log(estDansPanier);
+      if (estDansPanier.length > 0) {          
         alert('Ce produit a déjà été ajouté !');
-        console.log
       } else {            
         monPanier.push(addCam);
         alert("Vous avez ajouté le produit : " + name + " au panier !");

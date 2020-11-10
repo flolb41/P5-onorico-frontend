@@ -5,9 +5,7 @@ import {NbItemLogo} from './functions.js';
 // Vérification que tout est ok avant javascript
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log( "DOM Chargé!" );
-
-    //Fonction globale nb item panier
-    NbItemLogo();
+    NbItemLogo();       //Fonction globale nb item panier
   
     //création des variables
     let productId = [];
@@ -18,21 +16,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
     listCam.className = "cam";
     
     //Si le panier est vide (si rien dans le localStorage)
-    if (localStorage['panier'] === undefined || localStorage['panier'] === null) {
-        let emptyPanier = document.createElement('p');
+    if (localStorage['panier'] === undefined || localStorage['panier'] === null || localStorage['panier'] === []) {
+        let emptyPanier = document.createElement('p');        
+        let retourAccueil = document.createElement('button');
+        let formElt = document.querySelector('form');
+        let titreCache = document.getElementById('en-tete');
+
         emptyPanier.textContent = 'Oups !! Votre panier est vide';
         listCam.appendChild(emptyPanier);
-        let retourAccueil = document.createElement('button');
+        listCam.appendChild(retourAccueil);
+        titreCache.style = "display: none";
+        formElt.style = "display: none";
         retourAccueil.className = 'btn btn-primary';
         retourAccueil.textContent = "Retour à l'accueil";
         retourAccueil.addEventListener('click', event => {
             window.location.href = 'index.html'
-        });
-        listCam.appendChild(retourAccueil);
-        let titreCache = document.getElementById('en-tete');
-        titreCache.style = "display:none";
-        let formElt = document.querySelector('form');
-        formElt.style = "display:none";
+        });              
     } else { 
         //Récupération du localStorage pour creer le tableau des items dans le panier
         let monPanier = JSON.parse(localStorage['panier']);
@@ -40,7 +39,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // Sinon on créé la structure du panier avec les infos récupérées dans le localstorage
         monPanier.forEach(function(item, index, object) { 
 
-            //Création bouton supprimer du panier
+            //Création btn supprimer
             let btnRem = document.createElement('button');
             btnRem.className = 'fas fa-trash';
             btnRem.addEventListener('click', event => {
@@ -53,33 +52,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     alert('Cet élément est introuvable');
                 }
             });
-            let newProd = document.createElement("tr");
-            newProd.className = "camPart prod";
-
+            let newProd = document.createElement("tr");            
             let camImg = document.createElement('img');
+            let camName = document.createElement("td");
+            let qty = document.createElement("td");
+            let totCamprice = document.createElement("td");            
+            let nbItem = document.createElement("select");
+            let id = item.id;
+            let prixTotparCam = (item.prix/100);            
+            let prixTotal = 0;
+            let reducer = (accumulator, currentValue) => accumulator + currentValue;
+            let firstChoice = document.createElement("option");            
+            let secChoice = document.createElement("option");
+            let thirChoice = document.createElement("option");
+            let camPrice = document.createElement("td");
+
+            newProd.className = "camPart prod";
             camImg.src = item.img;
             camImg.className = 'miniature';
-        
-            let id = item.id;
             productId.push(id);
-
-            let camName = document.createElement("td");
             camName.className = "nomItem";
             camName.textContent = item.name;
-    
-            let qty = document.createElement("td");
             qty.className = "quantite";
-
-            let totCamprice = document.createElement("td");
             totCamprice.className = "total-prix-cam";
             totCamprice.textContent = item.prix/100 + ' €';
-
-            let prixTotparCam = (item.prix/100);
             totalpriceArray.push(prixTotparCam);
-
-            let prixTotal = 0;
-
-            let nbItem = document.createElement("select");
             nbItem.id = "nombre";
             nbItem.addEventListener('change', function () {
                 totCamprice.textContent = (item.prix/100) * this.value +" €";
@@ -87,27 +84,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 totalpriceArray.push(prixTotparCam);
                 location.reload;
             })
-            //on additionne toutes les valeurs du array pour avoir le prix total
-            let reducer = (accumulator, currentValue) => accumulator + currentValue;
-            prixTotal = totalpriceArray.reduce(reducer);
-
-            //création du select dans le panier
-            let firstChoice = document.createElement("option");
+            prixTotal = totalpriceArray.reduce(reducer);       
             firstChoice.className = "choice1";
             firstChoice.textContent = 1;
             firstChoice.value = 1;
-
-            let secChoice = document.createElement("option");
             secChoice.className = "choice2";
             secChoice.textContent = '2';
             secChoice.value = 2;
-
-            let thirChoice = document.createElement("option");
             thirChoice.className = "choice3";
             thirChoice.textContent = '3';
             thirChoice.value = 3
-    
-            let camPrice = document.createElement("td");
             camPrice.className = "prix-unit";
             camPrice.textContent = item.prix/100 +" €";
        
@@ -124,14 +110,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
             newProd.appendChild(totCamprice);
             newProd.appendChild(btnRem);
         })
-
         //Création des variables du formulaire
         let lastnameReq = document.getElementById('last_name');
         let firstnameReq = document.getElementById('first_name');
         let mailReq = document.getElementById('email');
         let addressReq= document.getElementById('address');
         let cityReq = document.getElementById('ville');
-
         let arrayContact = [firstnameReq, lastnameReq, addressReq, cityReq, mailReq];
 
         //Ajout du bouton permettant de passer à la validation du panier
@@ -173,8 +157,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 return response.json();
             }).then(json => {
                 let confirmation = JSON.stringify(json);
-                console.log('requète ok');
-                console.log(confirmation);
                 localStorage.setItem('confirmation', confirmation);
                 window.location = './confirmation.html';   
             }).catch(response =>{

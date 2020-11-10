@@ -8,13 +8,12 @@ export function Contact(firstName, lastName, address, city, email) {
 }
 
 // Fonction servant à afficher le nombre d'item dans le panier a coté du logo
-
 export function NbItemLogo() {
   if (localStorage.getItem('panier') === null) {
     let nbProdCart = 0;
   } else {
     let nbProdCart = JSON.parse(localStorage.getItem('panier')).length;   
-    let cartElt = document.querySelector('header div');
+    let cartElt = document.querySelector('header');
     let nbProdElt = document.createElement('span');
     nbProdElt.textContent = nbProdCart;
     cartElt.appendChild(nbProdElt);
@@ -22,7 +21,6 @@ export function NbItemLogo() {
 }
 
 //Fonction de vérification du formulaire
-
 export function checkEntries(arrayContact) {
   let error = false;
   arrayContact.forEach(function(item, index, array) {

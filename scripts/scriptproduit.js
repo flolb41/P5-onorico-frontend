@@ -1,12 +1,9 @@
-//Importation d'une fonction globale
-import {NbItemLogo} from './functions.js';
+import {NbItemLogo} from './functions.js';    //Importation d'une fonction globale
 
-// Vérification que tout est ok avant javascript
+// Vérification que le html est chargé avant javascript
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log( "DOM Chargé!" );
-
-  // Fonction globale nb item dans panier
-  NbItemLogo();
+  NbItemLogo();  // Fonction globale nb item dans panier
 
   //Déclaration des variables
   let urlServer = "http://localhost:3000/api/cameras/";
@@ -14,62 +11,53 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let idCam = urlprod.substr(4);
   let monPanier = JSON.parse(localStorage.getItem('panier')) || [];
 
-  // requete fetch en fonction de l'id du produit demandé
-  fetch(urlServer + idCam).then(function(response) {
+  fetch(urlServer + idCam)    // requete fetch en fonction de l'id du produit
+  .then(function(response) {
     return response.json();
   }).then(function(json) {
   
-    // Création des éléments du markup html avec les balises et les classes en fonction de la réponse
+    //Récupération des données de la réponse
     let name = json.name;
     let price = json.price;
     let image = json.imageUrl;
     let description = json.description;
     let lenses = json.lenses;
-    let id = json._id;
 
-    let mainElt = document.getElementById("cam-ID");
-    mainElt.className = "container";
-
+    //Variables de la strucutre html
+    let mainElt = document.getElementById("cam-ID");  //Balise ref
     let pageCam = document.createElement("div");
-    pageCam.className = "row";
-
     let cardCam = document.createElement("div");
-    cardCam.className = "col-lg-5 infoCam";
-    
     let titreElt = document.createElement("h2");        
-    titreElt.textContent = name;
-    
     let prixElt = document.createElement("span");
+    let imgElt = document.createElement("img");        
+    let descElt = document.createElement("p");
+    let lensElt = document.createElement("div");
+    let lensmenuElt = document.createElement("select")
+    let firstLens = document.createElement("option");
+    let secLens = document.createElement("option");
+    let btnElt = document.createElement("button");
+
+    mainElt.className = "container";
+    pageCam.className = "row";
+    cardCam.className = "col-lg-5 infoCam";
+    titreElt.textContent = name;
     prixElt.textContent = price/100 +"  €";
     prixElt.className = "price";
-    
-    let imgElt = document.createElement("img");        
     imgElt.className = "col-lg-7";
     imgElt.src = image;
-    imgElt.alt ="image produit appareil photo";
-    
-    let descElt = document.createElement("p");
+    imgElt.alt = "image produit appareil photo";
     descElt.className = "description";
-    descElt.textContent = description;
-    
-    let lensElt = document.createElement("div");
-    lensElt.className = "choix";
-    
-    let lensmenuElt = document.createElement("select")
-    lensmenuElt.className = "choix-lens";
-    
-    let firstLens = document.createElement("option");
+    descElt.textContent = description;    
+    lensElt.className = "choix";    
+    lensmenuElt.className = "choix-lens";    
     firstLens.className = "choix1";
     firstLens.textContent = lenses[0];
-    firstLens.href = "#";
-    
-    let secLens = document.createElement("option");
+    firstLens.href = "#";    
     secLens.className = "choix2";
     secLens.textContent = lenses[1];
     secLens.href = "#";
 
     // création du bouton et de la fonction servant à ajouter le produit au localStorage
-    let btnElt = document.createElement("button");
     btnElt.href = "#";
     btnElt.className = "btn btn-primary";
     btnElt.textContent = "Ajouter au panier";

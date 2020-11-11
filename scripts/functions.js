@@ -10,7 +10,7 @@ export function Contact(firstName, lastName, address, city, email) {
 // Fonction servant à afficher le nombre d'item dans le panier a coté du logo
 
 export function NbItemLogo() {
-  if (localStorage.getItem('panier').value === undefined || localStorage['panier'] === null || localStorage['panier'] === []) {
+  if (localStorage.getItem('panier') === undefined || localStorage.getItem('panier') === null || localStorage.getItem('panier') === []) {
     let nbProdCart = 0;
     let cartElt = document.querySelector('.logo-cart');
     let nbProdElt = document.createElement('span');

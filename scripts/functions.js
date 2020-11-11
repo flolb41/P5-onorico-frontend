@@ -10,11 +10,15 @@ export function Contact(firstName, lastName, address, city, email) {
 // Fonction servant à afficher le nombre d'item dans le panier a coté du logo
 
 export function NbItemLogo() {
-  if (localStorage.getItem('panier') === null) {
+  if (localStorage.getItem('panier').value === undefined || localStorage['panier'] === null || localStorage['panier'] === []) {
     let nbProdCart = 0;
+    let cartElt = document.querySelector('.logo-cart');
+    let nbProdElt = document.createElement('span');
+    nbProdElt.textContent = nbProdCart;
+    cartElt.appendChild(nbProdElt);
   } else {
     let nbProdCart = JSON.parse(localStorage.getItem('panier')).length;   
-    let cartElt = document.querySelector('header div');
+    let cartElt = document.querySelector('.logo-cart');
     let nbProdElt = document.createElement('span');
     nbProdElt.textContent = nbProdCart;
     cartElt.appendChild(nbProdElt);

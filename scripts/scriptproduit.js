@@ -37,7 +37,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let secLens = document.createElement("option");
     let btnElt = document.createElement("button");
 
-    mainElt.className = "container";
     pageCam.className = "row";
     cardCam.className = "col-lg-5 infoCam";
     titreElt.textContent = name;
@@ -71,12 +70,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const estDansPanier = monPanier.filter(function(elem){return elem.id === idCam}); 
       console.log(estDansPanier);
       if (estDansPanier.length > 0) {          
-        alert('Ce produit a déjà été ajouté !');
+        alert('Ce produit a déjà été ajouté !');       
+        location.reload;
       } else {            
         monPanier.push(addCam);
         alert("Vous avez ajouté le produit : " + name + " au panier !");
         localStorage.setItem('panier', JSON.stringify(monPanier));
-        location.reload(true);
+        location.reload;
       }  
     });        
     // Gestion parents/enfants des variables en fonction de leur emplacement dans le html

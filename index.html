@@ -10,15 +10,22 @@
     </head>
     <body>
         <header>
-            <a href="/index.html">Un site du groupe :
-                <img src="/image/logo.png" class="logo" alt="logo de la société Onorico"></a>
+            <nav class="navbar navbar-light">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/index.html">Accueil</a>
+                        <a class="dropdown-item" href="/panier.html">Panier</a>
+                    </div>
+                </div>
+            </nav>
             <h1 class="titre1">OrinoCam</h1>
             <div class="header-cart">
                 <a class="logo-cart" href="/panier.html"><img src="/image/panier.svg" alt="logo du panier"></a>
             </div>
-        </header>
+        </header>    
         <main class="container index">
-            <h2>Nouveautés</h2>
+            <h2 class="news">Nouveautés</h2>
             <div id="carouselControls" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselControls" data-slide-to="0" class="active"></li>
@@ -49,6 +56,11 @@
         <footer>
             <a class="contact" href="#">Contact</a>
             <a class="mentions" href="#">Mentions légales</a>
+            <a href="#" class="orinoco">
+                <p class="powered-by">Un site du groupe :</p>
+                <img src="/image/logo.png" class="logo" alt="logo de la société Onorico">
+            </a>
+
         </footer>
         <script type="module" src="./scripts/scriptindex.js"></script>
         <script type="module" src="./scripts/functions.js"></script> 

@@ -6,7 +6,7 @@
 * {
     box-sizing: border-box;
     font-family: 'DSR', cursive;
-    font-size: 110%;
+    font-size: 120%;
 }
 html { 
    width: 100%; 
@@ -19,21 +19,8 @@ header {
     width: 100%;
     background-color: #F3E9F1;
 }
-header a {
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    color: black;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-    font-size: 80%;
-}  
-.logo {
-    width: 50%;
-    height: auto;
-    margin-left: 5%;  
-}
 h1 {
- width: 33%;
+ width: 100%;
     font-size: 300%;
     text-align: center;
     font-size: 5em;
@@ -42,23 +29,26 @@ h1 {
 .header-cart {
     width: 33%;
     display: flex;
-    justify-content: flex-end;
 }
-.header-cart a {
-    width: 20%;
-}
-.header-cart a img {
-    width: 100%;
+.logo-cart img {
+    width: 25%;
     margin: 10% 0;
-    float: right;
 }
 .logo-cart {
-    width: 80%;
+    width: 100%;
+    display: flex; 
+    justify-content: flex-end;
 }
-.header-cart span {
-    width: 2%;
-    margin: 12% 5% 0 0;
-    font-size: 150%;
+.logo-cart span {
+    width: 30px;
+    margin: 20% 5% 0 0;
+    font-size: 100%;
+}
+nav {
+    width: 33%;
+}
+nav ul {
+    display: flex;
 }
 
                 /*PAGES par pages*/
@@ -76,6 +66,9 @@ h2 {
     font-size: 2em;
     font-weight: bold;
 } 
+.news {
+    margin-top: 0;
+}
 .carousel {
     width: 100%;
     background-color: white;
@@ -102,20 +95,22 @@ h2 {
 }
 .carousel-caption {
     border: 1px solid grey;
-    border-radius: 40%;
-    width: 24%;
+    border-radius: 30px;
     background-color: white;
     color: black;
     margin-bottom: 2%;
+    max-height: 25%;
 }
 .carousel-caption h2 {
-    font-size: 80%;
+    font-size: 50%;
     color: black;
     font-weight: bold;
+    margin: 0;
 }
 .carousel-caption span {
     color: black;
-    font-size: 60%;
+    font-size: 40%;
+    margin: 0;
 }
 .carousel-control-prev-icon, 
 .carousel-control-next-icon { 
@@ -153,7 +148,7 @@ h2 {
 }
 .cam-listing a h2, .cam-listing a span {
     text-align: center;
-    font-size: 100%;
+    font-size: 80%;
     margin-top: 10%;
 }
 .cam-listing a h2 {
@@ -168,7 +163,7 @@ h2 {
 /*produits*/
 #cam-ID {
     background-color: white;
-    margin-top: 5%;
+    margin: 5% 10% 10% 10%;
 }
 #cam-ID .row {
     margin: 0;
@@ -176,14 +171,14 @@ h2 {
 }
 #cam-ID .row h2 {
     margin-bottom: 5%;
-    font-size: 300%;
+    font-size: 200%;
 }
 #cam-ID .row .price {
-    font-size: 150%;
+    font-size: 100%;
 }
 #cam-ID .row p {
     margin-top: 5%;
-    font-size: 100%;
+    font-size: 75%;
     text-justify: auto;
 }
 #cam-ID .row a {
@@ -191,10 +186,16 @@ h2 {
     margin-top: 50px;
 }
 #cam-ID .row img {
+    width: 60%;
     border-radius: 100px;
+    object-fit: cover;
+    margin: 0 auto;
 }
 .camPart h2, .camPart div, .camPart span {
     margin: auto;
+}
+.infoCam .choix {
+    font-size: 75%;
 }
 .row div .btn-primary {
     width: 50%;
@@ -211,15 +212,13 @@ h2 {
     border-radius: 30px;
 }
 .cam p {
-    font-size: 400%;
+    font-size: 200%;
     margin-top: 10%;
     text-align: center;
 }
 .cam .btn-primary {
-    width: 100%;
-    margin-top: 2%;
-    margin-bottom: 2%;  
-    align-self: center;
+    width: 60%;
+    margin: 2% 20%;  
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
 .camPart{
@@ -232,7 +231,6 @@ table {
 }
 table tr {
     width: 100%;
-    margin-top: 2%;
 }
 td {
     width: 15%;
@@ -241,11 +239,11 @@ td {
 }
 #en-tete {
     font-weight: bold;
-    font-size: 150%;
+    font-size: 100%;
     margin: 2% 0;
 }
 .prod {
-    font-size: 150%;
+    font-size: 100%;
 }
 .miniature {
     width: 8%;
@@ -269,11 +267,18 @@ td {
     width: 50%;
     margin: 2% auto;
 }
+.total-commande {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 25%;
+    font-size: 100%;
+}
 form {
     margin: 2% 10% 0 10%;
 }
 .form-group {
     font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-size: 60%;
 }
 .form-group label {
     font-family: 'Trebuchet MS', Arial, sans-serif;
@@ -346,4 +351,19 @@ footer {
     float: right;
     margin-right: 2%;
     margin-top: 2%;
+}
+.orinoco {
+    width: 33%;
+    display: flex;
+    color: black;
+    
+}  
+.powered-by {
+    font-size: 80%;
+    margin-bottom: 0;
+}
+.logo {
+    width: 50%;
+    height: auto;
+    margin-left: 5%;  
 }

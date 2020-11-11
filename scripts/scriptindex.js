@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let legElt = document.createElement("div");    
         divCam.className = "carousel-item";        
         lienElt.href = "produit.html?id=" + article._id;        
-        legElt.className = "carousel-caption d-none d-md-block col-3";
+        legElt.className = "carousel-caption d-none d-lg-block col-3";
         nameElt.textContent = article.name;
         priceElt.textContent = "Prix : " + article.price/100 + ",00 €";       
         imgElt.className = "d-block";

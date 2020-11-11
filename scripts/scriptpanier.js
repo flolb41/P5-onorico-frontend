@@ -14,19 +14,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let urlPost = 'http://localhost:3000/api/cameras/order';
     let listCam = document.querySelector("tbody");
     listCam.className = "cam";
-    
     //Si le panier est vide (si rien dans le localStorage)
-    if (localStorage['panier'] === undefined || localStorage['panier'] === null || localStorage['panier'] === []) {
+    if (localStorage.getItem('panier') === undefined || localStorage.getItem('panier') === null || localStorage.getItem('panier') === []) {
         let emptyPanier = document.createElement('p');        
         let retourAccueil = document.createElement('button');
         let formElt = document.querySelector('form');
         let titreCache = document.getElementById('en-tete');
-
+        let paragTotal = document.querySelector('.p-prix-tot');
         emptyPanier.textContent = 'Oups !! Votre panier est vide';
         listCam.appendChild(emptyPanier);
         listCam.appendChild(retourAccueil);
         titreCache.style = "display: none";
         formElt.style = "display: none";
+        paragTotal.style = "display: none";
         retourAccueil.className = 'btn btn-primary';
         retourAccueil.textContent = "Retour à l'accueil";
         retourAccueil.addEventListener('click', event => {
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });              
     } else { 
         //Récupération du localStorage pour creer le tableau des items dans le panier
-        let monPanier = JSON.parse(localStorage['panier']);
+        let monPanier = JSON.parse(localStorage.getItem('panier'));
 
         // Sinon on créé la structure du panier avec les infos récupérées dans le localstorage
         monPanier.forEach(function(item, index, object) { 
@@ -58,9 +58,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let qty = document.createElement("td");
             let totCamprice = document.createElement("td");            
             let nbItem = document.createElement("select");
-            let id = item.id;
+            let itemId = item.id;
             let prixTotparCam = (item.prix/100);            
             let prixTotal = 0;
+            let prixtotcommandeElt = document.querySelector('.prixTtc');
             let reducer = (accumulator, currentValue) => accumulator + currentValue;
             let firstChoice = document.createElement("option");            
             let secChoice = document.createElement("option");
@@ -70,28 +71,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
             newProd.className = "camPart prod";
             camImg.src = item.img;
             camImg.className = 'miniature';
-            productId.push(id);
+            productId.push(itemId);
             camName.className = "nomItem";
             camName.textContent = item.name;
             qty.className = "quantite";
             totCamprice.className = "total-prix-cam";
             totCamprice.textContent = item.prix/100 + ' €';
             totalpriceArray.push(prixTotparCam);
-            nbItem.id = "nombre";
-            nbItem.addEventListener('change', function () {
-                totCamprice.textContent = (item.prix/100) * this.value +" €";
-                prixTotparCam = (item.prix/100) * this.selectedIndex.value;
-                totalpriceArray.push(prixTotparCam);
-                location.reload;
-            })
-            prixTotal = totalpriceArray.reduce(reducer);       
-            firstChoice.className = "choice1";
+            // Affichage prix intermédiaire et prix total en fonction de la quantité 
+            prixTotal = totalpriceArray.reduce(reducer); 
+            prixtotcommandeElt.textContent = prixTotal + ' € TTC';                
+            nbItem.addEventListener('change', event => {
+                totCamprice.textContent = (item.prix/100) * nbItem.value +" €";
+                prixTotparCam = (item.prix/100) * nbItem.value;
+                totalpriceArray.splice(index, 1, prixTotparCam);
+                prixTotal = totalpriceArray.reduce(reducer); 
+                prixtotcommandeElt.textContent = prixTotal + ' € TTC'; 
+                location.reload;                        
+            });
             firstChoice.textContent = 1;
             firstChoice.value = 1;
-            secChoice.className = "choice2";
             secChoice.textContent = '2';
             secChoice.value = 2;
-            thirChoice.className = "choice3";
             thirChoice.textContent = '3';
             thirChoice.value = 3
             camPrice.className = "prix-unit";
@@ -108,7 +109,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             nbItem.appendChild(thirChoice);
             newProd.appendChild(camPrice);
             newProd.appendChild(totCamprice);
-            newProd.appendChild(btnRem);
+            newProd.appendChild(btnRem);           
         })
         //Création des variables du formulaire
         let lastnameReq = document.getElementById('last_name');

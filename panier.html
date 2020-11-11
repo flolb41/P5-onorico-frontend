@@ -11,7 +11,15 @@
     </head>
     <body>
         <header>
-            <a href="/index.html"><img src="/image/logo.png" class="logo" alt="logo de la société Onorico"></a>
+            <nav class="navbar navbar-light">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/index.html">Accueil</a>
+                        <a class="dropdown-item" href="/panier.html">Panier</a>
+                    </div>
+                </div>
+            </nav>
             <h1 class="titre1">OrinoCam</h1>
             <div class="header-cart">
                 <a class="logo-cart" href="/panier.html"><img src="/image/panier.svg" alt="logo du panier"></a>
@@ -28,6 +36,11 @@
                     <td></td>
                 </tr>
             </table>
+            <div class="divider"></div>
+            <div class="total-commande">
+                <p class="p-prix-tot">Montant total de votre commande : </p>
+                <span class="prixTtc"></span>
+            </div>
             <div class="divider"></div>
             <form id="coordonnees" action="" class="formulaire" method="POST">
                 <div class="form-row">

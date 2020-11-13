@@ -4,6 +4,10 @@ import {NbItemLogo} from './functions.js';    //Importation d'une fonction globa
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log( "DOM Chargé!" );
   NbItemLogo();  // Fonction globale nb item dans panier
+  creationPageProduit();
+});
+
+function creationPageProduit() {
 
   //Déclaration des variables
   let urlServer = "http://localhost:3000/api/cameras/";
@@ -25,37 +29,46 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Variables de la strucutre html
     let mainElt = document.getElementById("cam-ID");  //Balise ref
-    let pageCam = document.createElement("div");
-    let cardCam = document.createElement("div");
-    let titreElt = document.createElement("h2");        
-    let prixElt = document.createElement("span");
-    let imgElt = document.createElement("img");        
-    let descElt = document.createElement("p");
-    let lensElt = document.createElement("div");
-    let lensmenuElt = document.createElement("select")
-    let firstLens = document.createElement("option");
-    let secLens = document.createElement("option");
-    let btnElt = document.createElement("button");
-
+    
+    let pageCam = document.createElement("div");    
     pageCam.className = "row";
+
+    let cardCam = document.createElement("div");    
     cardCam.className = "col-lg-5 infoCam";
+
+    let titreElt = document.createElement("h2");    
     titreElt.textContent = name;
+        
+    let prixElt = document.createElement("span");
     prixElt.textContent = price/100 +"  €";
     prixElt.className = "price";
+    
+    let imgElt = document.createElement("img");
     imgElt.className = "col-lg-7";
     imgElt.src = image;
-    imgElt.alt = "image produit appareil photo";
+    imgElt.alt = "image produit appareil photo";        
+    
+    let descElt = document.createElement("p");
     descElt.className = "description";
-    descElt.textContent = description;    
+    descElt.textContent = description; 
+    
+    let lensElt = document.createElement("div");    
     lensElt.className = "choix";    
+
+    let lensmenuElt = document.createElement("select");    
     lensmenuElt.className = "choix-lens";    
+
+    let firstLens = document.createElement("option");
     firstLens.className = "choix1";
     firstLens.textContent = lenses[0];
-    firstLens.href = "#";    
+    firstLens.href = "#";
+    
+    let secLens = document.createElement("option");
     secLens.className = "choix2";
     secLens.textContent = lenses[1];
     secLens.href = "#";
-
+    
+    let btnElt = document.createElement("button");
     // création du bouton et de la fonction servant à ajouter le produit au localStorage
     btnElt.href = "#";
     btnElt.className = "btn btn-primary";
@@ -76,7 +89,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         monPanier.push(addCam);
         alert("Vous avez ajouté le produit : " + name + " au panier !");
         localStorage.setItem('panier', JSON.stringify(monPanier));
-        location.reload;
+        location.reload(true);
       }  
     });        
     // Gestion parents/enfants des variables en fonction de leur emplacement dans le html
@@ -92,4 +105,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
     lensmenuElt.appendChild(secLens);
     cardCam.appendChild(btnElt);
   });
-}); 
+};

@@ -1,14 +1,15 @@
-import {NbItemLogo} from './functions.js';    //Importation d'une fonction globale
-
 // Vérification que le html est chargé avant javascript
+// Execution de la page
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log( "DOM Chargé!" );
   NbItemLogo();  // Fonction globale nb item dans panier
-  creationPageProduit();
+  getProduitById();
 });
 
-function creationPageProduit() {
+import {NbItemLogo} from './functions.js';    //Importation d'une fonction globale
 
+// Fonction de récupération d'un seul produit en fonction de son ID
+function getProduitById() {
   //Déclaration des variables
   let urlServer = "http://localhost:3000/api/cameras/";
   let urlprod = window.location.search;
@@ -19,7 +20,16 @@ function creationPageProduit() {
   .then(function(response) {
     return response.json();
   }).then(function(json) {
-  
+    
+    elementHtmlProduit(json);
+
+  }).catch(function(error) {
+    console.log(error)
+  });
+
+
+// Fonction de création de la page html
+function elementHtmlProduit(json) {    
     //Récupération des données de la réponse
     let name = json.name;
     let price = json.price;
@@ -80,8 +90,9 @@ function creationPageProduit() {
         prix : price,
         img : image 
       };   
-      const estDansPanier = monPanier.filter(function(elem){return elem.id === idCam}); 
-      console.log(estDansPanier);
+      const estDansPanier = monPanier.filter(function(elem) {
+        return elem.id === idCam
+      }); 
       if (estDansPanier.length > 0) {          
         alert('Ce produit a déjà été ajouté !');       
         location.reload;
@@ -104,5 +115,5 @@ function creationPageProduit() {
     lensmenuElt.appendChild(firstLens);
     lensmenuElt.appendChild(secLens);
     cardCam.appendChild(btnElt);
-  });
+  }
 };

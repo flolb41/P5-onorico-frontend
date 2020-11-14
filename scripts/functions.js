@@ -8,7 +8,6 @@ export function Contact(firstName, lastName, address, city, email) {
 }
 
 // Fonction servant à afficher le nombre d'item dans le panier a coté du logo
-
 export function NbItemLogo() {
   if (localStorage.getItem('panier') === undefined || localStorage.getItem('panier') === null || localStorage.getItem('panier') === []) {
     let nbProdCart = 0;
@@ -25,20 +24,4 @@ export function NbItemLogo() {
   };
 }
 
-//Fonction de vérification du formulaire
 
-export function checkEntries(arrayContact) {
-  let error = false;
-  arrayContact.forEach(function(item, index, array) {
-      if (item.value === "") {
-          item.className = "form-control is-invalid";
-          error = true;
-      } else {
-          item.className = 'form-control is-valid';
-      }
-  }) 
-  if (error == true) {
-      alert('Veuillez remplir les champs obligatoires');
-      return false;
-  }
-};

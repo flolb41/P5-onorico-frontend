@@ -1,5 +1,3 @@
-
-
 // Vérification que tout est ok avant javascript
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log( "DOM Chargé!" );
@@ -12,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         panierPlein();
     }
 });
+
 
 // Importation des fonctions globales
 import {Contact} from "./functions.js";
@@ -52,7 +51,6 @@ function panierPlein() {
     let productId = [];
     let postData; 
     let totalpriceArray = [];
-    let urlPost = 'http://localhost:3000/api/cameras/order';
     let listCam = document.querySelector("tbody");
     listCam.className = "cam";
     //Récupération du localStorage pour creer le tableau des items dans le panier
@@ -182,21 +180,7 @@ function panierPlein() {
         //Requête Post des données puis récupération de la réponse du serveur
         //qui est stockée en localStorage ('confirmation') enfin on envoie 
         //directement le client sur la page
-        fetch(urlPost, {
-            method: 'POST',
-            mode:'cors',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(postData),
-        }).then(response => {
-            return response.json();
-        }).then(json => {
-            let confirmation = JSON.stringify(json);
-            localStorage.setItem('confirmation', confirmation);
-            window.location = './confirmation.html';   
-        }).catch(response =>{
-            console.log(response)
-        }) 
-        //Commande terminée on supprime le localstorage ('panier')
-        localStorage.removeItem('panier'); 
-    });
-}
+        postApi(postData);
+ 
+    })
+};

@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'DSR';
-    src: url("/fonts/DSR.ttf");
+    font-family: 'DancingScript';
+    src: url("/fonts/DancingScript-VariableFont_wght.ttf") format("truetype");
 }
 /*PAGE GLOBALE*/
 * {
     box-sizing: border-box;
-    font-family: 'DSR', cursive;
+    font-family: 'DancingScript', cursive;
     font-size: 120%;
 }
 html { 

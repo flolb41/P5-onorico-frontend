@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 //importation d'une fonction globale
 import {NbItemLogo} from './functions.js';
+import {elementsHtmlError} from './functions.js';
 
 // Fonction générale de la requete et création de la page html
 function getApi() {
@@ -24,7 +25,10 @@ function getApi() {
     elementsHtmlListing(articles);  // Fonction qui créé le listing
 
   }).catch(function(err) {          //si problème requete fetch, affichage console
-      console.log('Fetch problem: ' + err.message);
+    console.log('Fetch problem: ' + err.message);
+
+    elementsHtmlError();            // Fonction qui informe le visiteur en cas de problème serveur
+    location.reload;                // elementHtmlError se trouve dans functions.js
   }); 
 };
 

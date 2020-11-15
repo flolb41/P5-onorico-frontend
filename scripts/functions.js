@@ -24,4 +24,18 @@ export function NbItemLogo() {
   };
 }
 
+// Fonction renseignant le visiteur d'une erreur serveur
+export function elementsHtmlError() {
+  let newsElt = document.querySelector('.news');
+  newsElt.style = 'display: none';
+  let carouselElt = document.querySelector('.carousel');
+  carouselElt.style = 'display: none';
+  let listingElt = document.querySelector('.listing');
+  listingElt.style = 'display: none';
 
+  let mainErrorElt = document.querySelector('main');
+  let errorElt = document.createElement('p');
+  errorElt.className = 'erreur-serveur';
+  errorElt.textContent = 'Le serveur est momentanément inaccessible. Nous nous excusons pour la gène occasionnée et faisons notre possible pour régler ce désagrément.' 
+  mainErrorElt.appendChild(errorElt);
+};

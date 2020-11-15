@@ -59,6 +59,10 @@ nav {
     padding-bottom: 10%;
     width: 100%;
 } 
+.erreur-serveur {
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-top: 20%;
+}
 h2 {
     width: 100%;
     text-align: center;

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'DancingScript';
-    src: url("../fonts/DancingScript-VariableFont_wght.ttf") format("truetype");
+    src: url("../fonts/static/DancingScript-Regular.ttf") format("truetype");
 }
 /*PAGE GLOBALE*/
 * {
@@ -104,6 +104,7 @@ h2 {
     border-radius: 30px;
     background-color: white;
     color: black;
+    padding: 1%;
     margin-bottom: 2%;
     max-height: 25%;
     z-index: 2;

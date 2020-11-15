@@ -1,4 +1,3 @@
-
 // Vérification que le html est chargé avant d'exécuter le javascript
 // Execution de la page
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -10,7 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 //importation d'une fonction globale
 import {NbItemLogo} from './functions.js';
-import {elementsHtmlError} from './functions.js';
+import {elementHtmlError} from './functions.js';
 
 // Fonction générale de la requete et création de la page html
 function getApi() {
@@ -21,19 +20,19 @@ function getApi() {
   }).then(function(json) {
     let articles = json;
 
-    elementHtmlCaroussel(articles); // Fonction qui créé le caroussel
+    elementsHtmlCaroussel(articles); // Fonction qui créé le caroussel
     elementsHtmlListing(articles);  // Fonction qui créé le listing
 
   }).catch(function(err) {          //si problème requete fetch, affichage console
     console.log('Fetch problem: ' + err.message);
 
-    elementsHtmlError();            // Fonction qui informe le visiteur en cas de problème serveur
-    location.reload;                // elementHtmlError se trouve dans functions.js
+    elementHtmlError();            // Fonction qui informe le visiteur en cas de problème serveur
+                                    // elementHtmlError se trouve dans functions.js
   }); 
 };
 
 //Fonction du caroussel, qui comporte un foreach
-function elementHtmlCaroussel(articles) {
+function elementsHtmlCaroussel(articles) {
   articles.forEach(function (article, index) {
 
     //variables servant à la création du caroussel

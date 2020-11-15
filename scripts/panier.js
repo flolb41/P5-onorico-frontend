@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-
 // Importation des fonctions globales
 import {Contact} from "./functions.js";
 import {NbItemLogo} from './functions.js';

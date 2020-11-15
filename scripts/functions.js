@@ -24,8 +24,8 @@ export function NbItemLogo() {
   };
 }
 
-// Fonction renseignant le visiteur d'une erreur serveur
-export function elementsHtmlError() {
+// Fonction renseignant le visiteur d'une erreur serveur sur page index
+export function elementHtmlError() {
   let newsElt = document.querySelector('.news');
   newsElt.style = 'display: none';
   let carouselElt = document.querySelector('.carousel');
@@ -33,6 +33,15 @@ export function elementsHtmlError() {
   let listingElt = document.querySelector('.listing');
   listingElt.style = 'display: none';
 
+  let mainErrorElt = document.querySelector('main');
+  let errorElt = document.createElement('p');
+  errorElt.className = 'erreur-serveur';
+  errorElt.textContent = 'Le serveur est momentanément inaccessible. Nous nous excusons pour la gène occasionnée et faisons notre possible pour régler ce désagrément.' 
+  mainErrorElt.appendChild(errorElt);
+};
+
+// Fonction renseignant le visiteur d'une erreur serveur sur page index
+export function elementHtmlErrorProd() {
   let mainErrorElt = document.querySelector('main');
   let errorElt = document.createElement('p');
   errorElt.className = 'erreur-serveur';

@@ -1,4 +1,3 @@
-
 function postApi(postData) {
     let urlPost = 'http://localhost:3000/api/cameras/order';
     fetch(urlPost, {
@@ -11,10 +10,15 @@ function postApi(postData) {
     }).then(json => {
         let confirmation = JSON.stringify(json);
         localStorage.setItem('confirmation', confirmation);
-        window.location = './confirmation.html';   
+        window.location = './confirmation.html'; 
+        localStorage.removeItem('panier');     //Commande terminée on supprime le localstorage ('panier')
     }).catch(response =>{
-        console.log(response)
+        console.log(response);
+        postApiError();
     }) 
-    //Commande terminée on supprime le localstorage ('panier')
-    localStorage.removeItem('panier'); 
+};
+
+//Fonction appelée en cas d'erreur serveur
+function postApiError() {
+    alert('Une erreur provenant du serveur ne nous permet pas de finaliser votre commande. Veuillez nous en excuser et réessayer ultérieurement.')
 };

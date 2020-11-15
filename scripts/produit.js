@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 import {NbItemLogo} from './functions.js';    //Importation d'une fonction globale
-
+import {elementHtmlErrorProd} from './functions.js';
 // Fonction de récupération d'un seul produit en fonction de son ID
 function getProduitById() {
   //Déclaration des variables
@@ -25,6 +25,7 @@ function getProduitById() {
 
   }).catch(function(error) {
     console.log(error)
+    elementHtmlErrorProd();
   });
 
 

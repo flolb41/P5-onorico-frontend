@@ -1,6 +1,9 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log( "DOM Chargé!" );
+    elementHtmlConfirmation();
+});
 
+function elementHtmlConfirmation() {
 // Ancrage sur le Html
     let mainElt = document.querySelector('.corps');
     let nCommElt = document.createElement('p');
@@ -19,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     mainElt.appendChild(confElt);
     mainElt.appendChild(suiviElt);
     mainElt.appendChild(merciElt);
-    
+
 // Récup resultat requète post stockée en localStorage
     let confData = JSON.parse(localStorage.getItem('confirmation'));
 
@@ -43,7 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         return accumulateur + valeurCourante;
         });
 //console.log(prixTotal);
-
+    
 //Création des deux paragraphes de la page de confirmation
 nCommElt.innerHTML = 'Commande N° '+commIdElt;
 bravoElt.innerHTML = 'Félicitations ' + prenomClientElt + ' ' + nomClientElt + ' !!';
@@ -57,4 +60,4 @@ delConferv.addEventListener( 'click', event => {
     localStorage.removeItem('confirmation');
     window.location.href = '/index.html';
 })
-});
+};

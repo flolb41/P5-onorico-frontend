@@ -1,4 +1,12 @@
-// Vérification que tout est ok avant javascript
+/**
+ * Importation des fonctions globales
+ */ 
+import {Contact} from "./functions.js";
+import {NbItemLogo} from './functions.js';
+
+/**
+ * Vérification que tout est ok avant javascript
+ */ 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log( "DOM Chargé!" );
     NbItemLogo();       //Fonction globale nb item panier
@@ -11,11 +19,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-// Importation des fonctions globales
-import {Contact} from "./functions.js";
-import {NbItemLogo} from './functions.js';
-
-// Fonction en cas depanier vide
+/**
+ * Fonction en cas depanier vide
+ */ 
 function panierVide() {
     let listCam = document.querySelector("tbody");
     listCam.className = "cam";
@@ -43,7 +49,9 @@ function panierVide() {
     listCam.appendChild(retourAccueil);     
 };
 
-// Fonction en cas de panier plein
+/**
+ * Fonction en cas de panier plein
+ */ 
 function panierPlein() {
     //création des variables        
     let reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -176,10 +184,12 @@ function panierPlein() {
         let products = productId;            
         postData = {'contact':contact, 'products':products};
 
-        //Requête Post des données puis récupération de la réponse du serveur
-        //qui est stockée en localStorage ('confirmation') enfin on envoie 
-        //directement le client sur la page
-        postApi(postData);
+        /**
+         * Requête Post des données puis récupération de la réponse du serveur
+         * qui est stockée en localStorage ('confirmation') enfin on envoie 
+         * directement le client sur la page
+        */
+        postCommande(postData);
  
     })
 };

@@ -1,37 +1,44 @@
-// Vérification que le html est chargé avant d'exécuter le javascript
-// Execution de la page
+/**
+ * importation d'une fonction globale
+ */
+import {NbItemLogo, elementHtmlError} from './functions.js';
+
+/**
+ * Vérification que le html est chargé avant d'exécuter le javascript
+ * Execution de la page
+ */
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log( "DOM Chargé!" );
-  NbItemLogo();                   // Fonction globale affichage nb article logo panier
-  getApi();                       // Fonction créant la page
+  NbItemLogo();               // Fonction globale affichage nb article logo panier
+  getProduit();               // Fonction créant la page
 });
 
 
-//importation d'une fonction globale
-import {NbItemLogo} from './functions.js';
-import {elementHtmlError} from './functions.js';
-
-// Fonction générale de la requete et création de la page html
-function getApi() {
+/**
+ * Fonction générale de la requete et création de la page html 
+ */ 
+function getProduit() {
   let urlServer = "http://localhost:3000/api/cameras/";
-  let promise = fetch(urlServer)                  //requète fetch serveur et réception des data
+  let promise = fetch(urlServer)  //requète fetch serveur et réception des data
   .then(function(response) {
-    return response.json();         //  on réponse converit la réponse en json   
+    return response.json();       //  on réponse converit la réponse en json   
   }).then(function(json) {
     let articles = json;
 
     elementsHtmlCaroussel(articles); // Fonction qui créé le caroussel
-    elementsHtmlListing(articles);  // Fonction qui créé le listing
+    elementsHtmlListing(articles);   // Fonction qui créé le listing
 
-  }).catch(function(err) {          //si problème requete fetch, affichage console
+  }).catch(function(err) {           //si problème requete fetch, affichage console
     console.log('Fetch problem: ' + err.message);
 
     elementHtmlError();            // Fonction qui informe le visiteur en cas de problème serveur
-                                    // elementHtmlError se trouve dans functions.js
+                                   // elementHtmlError se trouve dans functions.js
   }); 
 };
 
-//Fonction du caroussel, qui comporte un foreach
+/** 
+ * Fonction du caroussel, qui comporte un foreach
+ */ 
 function elementsHtmlCaroussel(articles) {
   articles.forEach(function (article, index) {
 
@@ -59,7 +66,8 @@ function elementsHtmlCaroussel(articles) {
     let legElt = document.createElement("div");    
     legElt.className = "carousel-caption d-none d-lg-block col-3";
 
-    // Déclaration parents/enfants pour établir le squelette html
+    // Déclaration parents/enfants pour établir le squelette html 
+      
     rowElt.appendChild(divCam);
     lienElt.appendChild(legElt);
     lienElt.appendChild(imgElt);
@@ -69,7 +77,9 @@ function elementsHtmlCaroussel(articles) {
   });
 };
 
-//Fonction du listing, qui comporte un foreach aussi
+/**
+ * Fonction du listing, qui comporte un foreach aussi 
+ */ 
 function elementsHtmlListing(articles) {
    articles.forEach(function (article, index) {
 

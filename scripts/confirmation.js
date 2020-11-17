@@ -1,8 +1,14 @@
+/**
+ * Vérification que tout est ok avant javascript
+ */ 
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log( "DOM Chargé!" );
     elementHtmlConfirmation();
 });
 
+/**
+ * Fonction de création de la page deconfirmation
+ */
 function elementHtmlConfirmation() {
 // Ancrage sur le Html
     let mainElt = document.querySelector('.corps');
@@ -34,7 +40,6 @@ function elementHtmlConfirmation() {
     let commIdElt = confData.orderId;
     let arrayProdPrix = [];
     let prixTotal;
-//    console.log(productsArray);
 
 //Récup du prix de chaque produit dans un tableau
     productsArray.forEach(function(item, index, array) {

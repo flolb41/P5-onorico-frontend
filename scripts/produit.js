@@ -1,14 +1,22 @@
-// Vérification que le html est chargé avant javascript
-// Execution de la page
+/**
+ * Importation d'une fonction globale
+ */
+import {NbItemLogo} from './functions.js';    
+import {elementHtmlErrorProd} from './functions.js';
+
+/**
+ * Vérification que le html est chargé avant javascript 
+ * Execution de la page
+ */ 
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log( "DOM Chargé!" );
   NbItemLogo();  // Fonction globale nb item dans panier
   getProduitById();
 });
 
-import {NbItemLogo} from './functions.js';    //Importation d'une fonction globale
-import {elementHtmlErrorProd} from './functions.js';
-// Fonction de récupération d'un seul produit en fonction de son ID
+/**
+ * Fonction de récupération d'un seul produit en fonction de son ID
+ */ 
 function getProduitById() {
   //Déclaration des variables
   let urlServer = "http://localhost:3000/api/cameras/";
@@ -29,7 +37,9 @@ function getProduitById() {
   });
 
 
-// Fonction de création de la page html
+/**
+ * Fonction de création de la page html
+ */ 
 function elementHtmlProduit(json) {    
     //Récupération des données de la réponse
     let name = json.name;
@@ -96,12 +106,11 @@ function elementHtmlProduit(json) {
       }); 
       if (estDansPanier.length > 0) {          
         alert('Ce produit a déjà été ajouté !');       
-        location.reload;
       } else {            
         monPanier.push(addCam);
         alert("Vous avez ajouté le produit : " + name + " au panier !");
         localStorage.setItem('panier', JSON.stringify(monPanier));
-        location.reload(true);
+        location.reload(NbItemLogo);  
       }  
     });        
     // Gestion parents/enfants des variables en fonction de leur emplacement dans le html

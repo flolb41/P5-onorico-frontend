@@ -106,6 +106,9 @@ function panierPlein() {
             prixtotcommandeElt.textContent = prixTotal + ' € TTC'; 
             location.reload;                        
         });
+        let lensprodCart = document.createElement('td');
+        lensprodCart.className = 'lens-type';
+        lensprodCart.textContent = item.lens;
 
         let firstChoice = document.createElement("option");
         firstChoice.textContent = '1';
@@ -140,6 +143,7 @@ function panierPlein() {
         listCam.appendChild(newProd);
         newProd.appendChild(camImg);
         newProd.appendChild(camName);
+        newProd.appendChild(lensprodCart);
         newProd.appendChild(qty);
         qty.appendChild(nbItem);
         nbItem.appendChild(firstChoice);
@@ -155,7 +159,7 @@ function panierPlein() {
     let mailReq = document.getElementById('email');
     let addressReq= document.getElementById('address');
     let cityReq = document.getElementById('ville');
-    let arrayContact = [firstnameReq, lastnameReq, addressReq, cityReq, mailReq];
+    let arrayContact = [firstnameReq, lastnameReq, addressReq, cityReq];
 
     //Ajout du bouton permettant de passer à la validation du panier
     let mainElt = document.querySelector('.panier'); 
@@ -167,16 +171,31 @@ function panierPlein() {
     mainElt.appendChild(validation);
     validation.addEventListener('click', function checkEntries() {
         let error = false;
+        let error1 = false;
+
         arrayContact.forEach(function(item, index, array) {
             if (item.value === "") {
-                item.className = "form-control is-invalid";
+                item.className = "form-control is-invalid"; 
+                alert('Veuillez remplir les champs obligatoires');
                 error = true;
             } else {
-                item.className = 'form-control is-valid';
-            }
-        }) 
-        if (true == error) {
-            alert('Veuillez remplir les champs obligatoires');
+                item.className = "form-control is-valid";
+                error = false;   
+            }    
+        });
+       
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mailReq.value)) {
+            mailReq.className = 'form-control is-valid'; 
+        } else {
+            alert("Votre adresse e-mail n'est pas valide");
+            mailReq.className = 'form-control is-invalid'; 
+            let errorMail = document.createElement('div');
+            errorMail.className ='invalid-feedback';
+            errorMail.textContent = 'Votre E-mail doit être sous la forme nom@exemple.fr';
+            document.querySelector('.email-val').appendChild(errorMail);
+            return false;            
+        };
+         if (error === true) {
             return false;
         };
         //récupération et mise en forme des données à envoyer au serveur
@@ -188,8 +207,8 @@ function panierPlein() {
          * Requête Post des données puis récupération de la réponse du serveur
          * qui est stockée en localStorage ('confirmation') enfin on envoie 
          * directement le client sur la page
-        */
+         */
         postCommande(postData);
- 
     })
+
 };

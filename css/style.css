@@ -259,7 +259,7 @@ td {
     margin-right: 6%;
 }
 .btn-success {
-    margin: 2% 35%;
+    margin: 2%;
     width: 30%;
     font-family: 'Trebuchet MS', Arial, sans-serif;
 }
@@ -285,7 +285,7 @@ td {
 form {
     margin: 2% 10% 0 10%;
 }
-.form-group {
+.form-group, .form-group div {
     font-family: 'Trebuchet MS', Arial, sans-serif;
     font-size: 60%;
 }

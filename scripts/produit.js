@@ -99,10 +99,12 @@ function elementHtmlProduit(json) {
         id : idCam,
         name : name,
         prix : price,
-        img : image 
+        img : image, 
+        lens : lensmenuElt.value
       };   
+      console.log(addCam);
       const estDansPanier = monPanier.filter(function(elem) {
-        return elem.id === idCam
+        return elem.id === idCam && elem.lens === lensmenuElt.value;
       }); 
       if (estDansPanier.length > 0) {          
         alert('Ce produit a déjà été ajouté !');       

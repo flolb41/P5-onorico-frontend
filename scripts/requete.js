@@ -7,7 +7,7 @@ function postCommande(postData) {
     let urlPost = 'http://localhost:3000/api/cameras/order';
     fetch(urlPost, {
         method: 'POST',
-        mode:'cors',
+        mode: 'cors',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(postData),
     }).then(response => {

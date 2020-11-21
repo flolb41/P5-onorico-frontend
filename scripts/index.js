@@ -1,7 +1,8 @@
 /**
  * importation d'une fonction globale
  */
-import {NbItemLogo, elementHtmlError} from './functions.js';
+import {NbItemLogo} from './functions.js';
+import {elementHtmlError} from './functions.js';
 
 /**
  * Vérification que le html est chargé avant d'exécuter le javascript

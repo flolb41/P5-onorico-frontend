@@ -26,6 +26,7 @@ function getProduitById() {
 
   fetch(urlServer + idCam, {
     method: 'GET',
+    headers: {'Content-Type': 'application/json'},
     mode: 'cors'
   })    // requete fetch en fonction de l'id du produit
   .then(function(response) {

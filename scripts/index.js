@@ -22,7 +22,8 @@ function getProduit() {
   let urlServer = "http://localhost:3000/api/cameras/";
   let promise = fetch(urlServer, {
     method: 'GET',
-    mode: 'cors'
+    headers: {'Content-Type': 'application/json'},
+    mode: 'cors'  
   })  //requète fetch serveur et réception des data
   .then(function(response) {
     return response.json();       //  on réponse converit la réponse en json   

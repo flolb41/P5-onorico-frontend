@@ -24,7 +24,10 @@ function getProduitById() {
   let idCam = urlprod.substr(4);
   let monPanier = JSON.parse(localStorage.getItem('panier')) || [];
 
-  fetch(urlServer + idCam)    // requete fetch en fonction de l'id du produit
+  fetch(urlServer + idCam, {
+    method: 'GET',
+    mode: 'cors'
+  })    // requete fetch en fonction de l'id du produit
   .then(function(response) {
     return response.json();
   }).then(function(json) {

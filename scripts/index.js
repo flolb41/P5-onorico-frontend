@@ -1,10 +1,4 @@
 /**
- * importation d'une fonction globale
- */
-import {NbItemLogo} from './functions.js';
-import {elementHtmlError} from './functions.js';
-
-/**
  * Vérification que le html est chargé avant d'exécuter le javascript
  * Execution de la page
  */
@@ -20,26 +14,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
  */ 
 function getProduit() {
   let urlServer = "http://localhost:3000/api/cameras/";
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", urlServer);
-  xhr.responseType = "json";
-  xhr.send();
-
-  xhr.onload = function(){
-    if (xhr.status != 200){ 
-        console.log("Erreur " + xhr.status + " : " + xhr.statusText); 
-        elementHtmlError();
-    }else{ 
-   
-  let reponse = JSON.stringify(xhr.response);
-  let articles = JSON.parse(reponse);
   
-      console.log(articles);
+  let promise = fetch(urlServer, {   
+    mode: 'cors'  
+  })  //requète fetch serveur et réception des data
+  .then(function(response) {
+    return response.json();       //  on réponse converit la réponse en json   
+  }).then(function(json) {
+    let articles = json;
+
     elementsHtmlCaroussel(articles); // Fonction qui créé le caroussel
     elementsHtmlListing(articles);   // Fonction qui créé le listing
 
-   }}; 
+  }).catch(function(err) {           //si problème requete fetch, affichage console
+    console.log('Fetch problem: ' + err.message);
+
+    elementHtmlError();            // Fonction qui informe le visiteur en cas de problème serveur
+                                   // elementHtmlError se trouve dans functions.js
+  }); 
 };
 
 /** 

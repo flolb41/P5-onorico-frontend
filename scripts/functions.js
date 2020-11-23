@@ -6,7 +6,7 @@
  * @param {string} city 
  * @param {string} email 
  */
-export function Contact(firstName, lastName, address, city, email) {
+function Contact(firstName, lastName, address, city, email) {
     this.firstName = firstName.value;
     this.lastName = lastName.value;
     this.address = address.value;
@@ -17,7 +17,7 @@ export function Contact(firstName, lastName, address, city, email) {
 /**
  * Fonction servant à afficher le nombre d'item dans le panier a coté du logo  
  */ 
-export function NbItemLogo() {
+function NbItemLogo() {
   if (localStorage.getItem('panier') === undefined || localStorage.getItem('panier') === null || localStorage.getItem('panier') === []) {
     let nbProdCart = 0;
     let cartElt = document.querySelector('.logo-cart');
@@ -36,7 +36,7 @@ export function NbItemLogo() {
 /**
  *  Fonction renseignant le visiteur d'une erreur serveur sur page index
  */
- export function elementHtmlError() {
+function elementHtmlError() {
   let newsElt = document.querySelector('.news');
   newsElt.style = 'display: none';
   let carouselElt = document.querySelector('.carousel');
@@ -54,7 +54,7 @@ export function NbItemLogo() {
 /**
  * Fonction renseignant le visiteur d'une erreur serveur sur page index
  */
- export function elementHtmlErrorProd() {
+function elementHtmlErrorProd() {
   let mainErrorElt = document.querySelector('main');
   let errorElt = document.createElement('p');
   errorElt.className = 'erreur-serveur';

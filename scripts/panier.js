@@ -1,10 +1,4 @@
 /**
- * Importation des fonctions globales
- */ 
-import {Contact} from "./functions.js";
-import {NbItemLogo} from './functions.js';
-
-/**
  * Vérification que tout est ok avant javascript
  */ 
 window.addEventListener('DOMContentLoaded', (event) => {

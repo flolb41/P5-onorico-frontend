@@ -1,10 +1,4 @@
 /**
- * Importation d'une fonction globale
- */
-import {NbItemLogo} from './functions.js';    
-import {elementHtmlErrorProd} from './functions.js';
-
-/**
  * Vérification que le html est chargé avant javascript 
  * Execution de la page
  */ 
@@ -24,22 +18,19 @@ function getProduitById() {
   let idCam = urlprod.substr(4);
   let monPanier = JSON.parse(localStorage.getItem('panier')) || [];
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", urlServer + idCam);
-  xhr.responseType = "json";
-  xhr.send();
-
-  xhr.onload = function(){
-    if (xhr.status != 200){ 
-        console.log("Erreur " + xhr.status + " : " + xhr.statusText); 
-        elementHtmlErrorProd();
-    }else{ 
-      let reponse = JSON.stringify(xhr.response);
-      let article = JSON.parse(reponse);
+  fetch(urlServer + idCam)    // requete fetch en fonction de l'id du produit
+  .then(function(response) {
+    return response.json();
+  }).then(function(json) {
     
-      elementHtmlProduit(article);
-    }};
- 
+    elementHtmlProduit(json);
+
+  }).catch(function(error) {
+    console.log(error)
+    elementHtmlErrorProd();
+  });
+
+
 /**
  * Fonction de création de la page html
  */ 

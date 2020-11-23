@@ -24,23 +24,22 @@ function getProduitById() {
   let idCam = urlprod.substr(4);
   let monPanier = JSON.parse(localStorage.getItem('panier')) || [];
 
-  fetch(urlServer + idCam, {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'},
-    mode: 'cors'
-  })    // requete fetch en fonction de l'id du produit
-  .then(function(response) {
-    return response.json();
-  }).then(function(json) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", urlServer + idCam);
+  xhr.responseType = "json";
+  xhr.send();
+
+  xhr.onload = function(){
+    if (xhr.status != 200){ 
+        console.log("Erreur " + xhr.status + " : " + xhr.statusText); 
+        elementHtmlErrorProd();
+    }else{ 
+      let reponse = JSON.stringify(xhr.response);
+      let article = JSON.parse(reponse);
     
-    elementHtmlProduit(json);
-
-  }).catch(function(error) {
-    console.log(error)
-    elementHtmlErrorProd();
-  });
-
-
+      elementHtmlProduit(article);
+    }};
+ 
 /**
  * Fonction de création de la page html
  */ 

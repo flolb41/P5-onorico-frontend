@@ -63,6 +63,6 @@ merciElt.innerHTML = 'Toute l\'équipe vous remercie de votre visite et vous dit
 let delConferv = document.querySelector('button');
 delConferv.addEventListener( 'click', event => {
     localStorage.removeItem('confirmation');
-    window.location.href = '/index.html';
+    window.location.href = './index.html';
 })
 };
